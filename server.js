@@ -5,23 +5,17 @@ const sessions = require("./routes/api/sessions")
 const app = express();
 
 app.use(express.json())
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 const db = require("./config/keys").mongoURI
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB connected -> OK"))
     .catch(err => console.log(err));
-
-// var connection = mongoose.connection;
-
-// connection.once("open", function () {
-//     connection.db.collection("workout_sessions", function(err, collection){
-//         collection.find({}).toArray(function(err, data){
-//             console.log(data); // it will print your collection data
-//         })
-//     });
-// });
-
     
 app.use("/api/session", sessions)
 
