@@ -13,8 +13,8 @@ router.get("movements/:id", (req, res) => {
 });
 
 router.post("/movements", async (req, res) => {
-    const movement = await new Movement(req.body);
-    movement.save()
+    const movement = new Movement(req.body);
+    await movement.save()
 })
 
 
