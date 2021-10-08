@@ -1,0 +1,27 @@
+@localhost =  http://localhost:5000
+
+
+
+### Create Movement
+POST {{localhost}}/movements
+Content-Type: application/json
+
+{
+   "movement_name": "Pushup",
+   "movement_display_name": "Pushup",
+   "video_url": "http://www.google.com",
+   "video_start_time": 5.2,
+   "video_end_time": 5.2,
+   "video_source": "Youtube",
+   "equipment_list": ["Pushup"]
+}
+
+#### Get All Movements
+GET {{localhost}}/movements
+
+
+### Get a specific movement by movementId
+GET {{localhost}}/movements/616046ad321605b19aa89197
+
+
+###

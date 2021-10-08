@@ -1,22 +1,12 @@
 const express = require("express");
+const { movementController } = require("../controllers/movement.controller");
 const router = express.Router();
-const Movement = require("../models/Movement.schema");
+const Movement = require("../schema/Movement.schema");
 
-router.get("/movements", (req, res) => {
-    Movement.find()
-    .then(movements => res.json(movements))
-})
+router.get("/", movementController.getMovements);
 
-router.get("movements/:id", (req, res) => {
-    Movement.findById(req.params.id)
-    .then(movements => res.json(movements))
-});
+router.get("/:movementId", movementController.getMovement);
 
-router.post("/movements", async (req, res) => {
-    const movement = new Movement(req.body);
-    await movement.save()
-})
-
-
+router.post("/", movementController.postMovement);
 
 module.exports = router;
