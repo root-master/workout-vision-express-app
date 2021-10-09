@@ -11,6 +11,6 @@ module.exports = class WorkOut {
 
   static async findMovementById(movementId) {
     console.log(movementId);
-    return await MovementDB.findById(movementId);
+    return await MovementDB.findById(movementId).populate();
   }
 };
