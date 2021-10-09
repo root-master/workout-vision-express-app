@@ -7,13 +7,14 @@ POST {{localhost}}/movements
 Content-Type: application/json
 
 {
-   "movement_name": "Pushup",
+   "movement_name": "Pushup2",
    "movement_display_name": "Pushup",
    "video_url": "http://www.google.com",
    "video_start_time": 5.2,
    "video_end_time": 5.2,
    "video_source": "Youtube",
-   "equipment_list": ["Pushup"]
+   "equipment_list": ["Pushup"],
+   "workout_category_list": ["Strength"]
 }
 
 #### Get All Movements
