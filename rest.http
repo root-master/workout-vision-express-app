@@ -25,4 +25,5 @@ GET {{localhost}}/movements
 GET {{localhost}}/movements/616046ad321605b19aa89197
 
 
-###
+### Delete a specific movement by movementId
+DELETE {{localhost}}/movements/61616a473c4fcabea3ecf8a2

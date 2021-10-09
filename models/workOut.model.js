@@ -10,7 +10,10 @@ module.exports = class WorkOut {
   }
 
   static async findMovementById(movementId) {
-    console.log(movementId);
     return await MovementDB.findById(movementId).populate();
+  }
+
+  static async deleteMovementById(movementId) {
+    return await MovementDB.findByIdAndDelete(movementId);
   }
 };
