@@ -22,8 +22,11 @@ exports.movementController = {
       const newMovement = await WorkOut.postMovement(movementInfo);
       res.status(201).json({ newMovementInfo: newMovement });
     } catch (error) {
-      if (error.isJoi) next(createHttpError.BadRequest(error.message));
-      next(error);
+      if (error.isJoi) {
+        next(createHttpError.BadRequest(error.message));
+      } else {
+        next(error);
+      }
     }
   },
   getMovement: async (req, res, next) => {

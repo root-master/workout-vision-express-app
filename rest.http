@@ -7,7 +7,6 @@ POST {{localhost}}/movements
 Content-Type: application/json
 
 {
-   "movementName": "Najme",
    "movementDisplayName": "Pushup - Najme",
    "videoUrl": "http://www.pushup-najme.com",
    "videoStartTime": 5,
