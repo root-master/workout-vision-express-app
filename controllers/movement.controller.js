@@ -53,7 +53,6 @@ exports.movementController = {
   updateMovement: async (req, res, next) => {
     try {
       const { movement: formMovement, movementId } = req.body;
-      console.log({ formMovement, movementId });
       const movement = await movementSchemaValidation().validateAsync(
         formMovement
       );
