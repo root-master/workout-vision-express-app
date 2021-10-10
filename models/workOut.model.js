@@ -16,4 +16,8 @@ module.exports = class WorkOut {
   static async deleteMovementById(movementId) {
     return await MovementDB.findByIdAndDelete(movementId);
   }
+
+  static async updateMovementById(movement, movementId) {
+    return await MovementDB.findOneAndUpdate(movementId, movement);
+  }
 };

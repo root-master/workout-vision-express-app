@@ -7,14 +7,14 @@ POST {{localhost}}/movements
 Content-Type: application/json
 
 {
-   "movementName": "Pushup5",
-   "movementDisplayName": "Pushup5",
-   "videoUrl": "http://www.google5.com",
-   "videoStartTime": 5.55,
-   "videoEndTime": 5.5,
-   "videoSource": "Youtube5",
-   "equipmentList": ["Pushup5"],
-   "workoutCategoryList": ["Strength5"]
+   "movementName": "Najme",
+   "movementDisplayName": "Pushup - Najme",
+   "videoUrl": "http://www.pushup-najme.com",
+   "videoStartTime": 5,
+   "videoEndTime": 8.2,
+   "videoSource": "Youtube",
+   "equipmentList": ["Pushup"],
+   "workoutCategoryList": ["Strength"]
 }
 
 #### Get All Movements
@@ -22,8 +22,28 @@ GET {{localhost}}/movements
 
 
 ### Get a specific movement by movementId
-GET {{localhost}}/movements/616046ad321605b19aa89197
+GET {{localhost}}/movements/6162fa83f3f8e6b924d7f95c
 
 
 ### Delete a specific movement by movementId
 DELETE {{localhost}}/movements/61616a473c4fcabea3ecf8a2
+
+
+### Update a specific movment by movementObject and movementId
+PUT {{localhost}}/movements
+Content-Type: application/json
+
+{
+   "movement": {
+         "movementName": "Erfaneeeeee",
+         "movementDisplayName": "Erfan PushUp",
+         "videoUrl": "http://www.erfan-pushup.com",
+         "videoStartTime": 5.5,
+         "videoEndTime": 8.6,
+         "videoSource": "Youtube",
+         "equipmentList": ["Pushup"],
+         "workoutCategoryList": ["Strength"]
+      },
+   "movementId": "6162fa83f3f8e6b924d7f95c"
+ 
+}

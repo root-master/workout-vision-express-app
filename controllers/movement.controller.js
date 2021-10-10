@@ -1,8 +1,6 @@
 const { movementSchemaValidation } = require("../helpers/schemaValidations");
 const WorkOut = require("../models/workOut.model");
-const Joi = require("joi");
 const createHttpError = require("http-errors");
-const Movement = require("../schema/Movement.schema");
 
 exports.movementController = {
   getMovements: async (req, res, next) => {
@@ -47,6 +45,23 @@ exports.movementController = {
         throw createHttpError.BadRequest("Movement ID not found");
       const deletedMovement = await WorkOut.deleteMovementById(movementId);
       res.status(200).json({ deletedMovement });
+    } catch (error) {
+      next(error);
+    }
+  },
+  updateMovement: async (req, res, next) => {
+    try {
+      const { movement: formMovement, movementId } = req.body;
+      const movement = await movementSchemaValidation().validateAsync(
+        formMovement
+      );
+      const updatedMovement = await WorkOut.updateMovementById(
+        movement,
+        movementId
+      );
+      if (!updatedMovement)
+        throw createHttpError.NotFound("Movement Not Found");
+      res.status(200).json({ updatedMovement });
     } catch (error) {
       next(error);
     }
