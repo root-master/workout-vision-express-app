@@ -35,15 +35,14 @@ Content-Type: application/json
 
 {
    "movement": {
-         "movementName": "Erfaneeeeee",
-         "movementDisplayName": "Erfan PushUp",
-         "videoUrl": "http://www.erfan-pushup.com",
-         "videoStartTime": 5.5,
-         "videoEndTime": 8.6,
-         "videoSource": "Youtube",
-         "equipmentList": ["Pushup"],
-         "workoutCategoryList": ["Strength"]
-      },
-   "movementId": "6162fa83f3f8e6b924d7f95c"
+      "movementName": "Erfaneeeeee updated",
+      "movementDisplayName": "Erfan PushUp",
+      "videoUrl": "http://www.erfan-pushup.com",
+      "videoStartTime": 5.5,
+      "videoEndTime": 8.6,
+      "videoSource": "Youtube",
+      "equipmentList": ["Pushup"],
+      "workoutCategoryList": ["Strength"]
+   }
  
 }
