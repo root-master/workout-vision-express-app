@@ -12,9 +12,9 @@ Content-Type: application/json
    "videoUrl": "http://www.pushup-najme.com",
    "videoStartTime": 5,
    "videoEndTime": 8.2,
-   "videoSource": "Youtube",
-   "equipmentList": ["Pushup"],
-   "workoutCategoryList": ["Strength"]
+   "videoSource": "youtube",
+   "equipmentList": ["barbel"],
+   "workoutCategoryList": ["strength"]
 }
 
 #### Get All Movements

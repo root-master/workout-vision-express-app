@@ -18,9 +18,9 @@ module.exports = class WorkOut {
   }
 
   static async updateMovementById(movement, movementId) {
-    return await MovementDB.findOneAndReplace(
-      { _id: { $eq: movementId } },
-      movement
-    );
+    return await MovementDB.findByIdAndUpdate(movementId, movement, {
+      strict: true,
+      returnOriginal: false,
+    });
   }
 };

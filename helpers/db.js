@@ -6,7 +6,8 @@ async function dbConnect() {
     dbName: "workout_db",
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
   });
 
   connection.on("connected", () => {
