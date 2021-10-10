@@ -10,7 +10,7 @@ module.exports = class WorkOut {
   }
 
   static async findMovementById(movementId) {
-    return await MovementDB.findById(movementId).populate();
+    return await MovementDB.findById(movementId, { _id: 0, __v: 0 });
   }
 
   static async deleteMovementById(movementId) {
@@ -18,6 +18,9 @@ module.exports = class WorkOut {
   }
 
   static async updateMovementById(movement, movementId) {
-    return await MovementDB.findOneAndUpdate(movementId, movement);
+    return await MovementDB.findOneAndReplace(
+      { _id: { $eq: movementId } },
+      movement
+    );
   }
 };

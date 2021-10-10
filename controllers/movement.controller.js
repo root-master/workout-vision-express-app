@@ -45,6 +45,7 @@ exports.movementController = {
         throw createHttpError.BadRequest("Movement ID not found");
       const deletedMovement = await WorkOut.deleteMovementById(movementId);
       res.status(200).json({ deletedMovement });
+      s;
     } catch (error) {
       next(error);
     }
@@ -52,6 +53,7 @@ exports.movementController = {
   updateMovement: async (req, res, next) => {
     try {
       const { movement: formMovement, movementId } = req.body;
+      console.log({ formMovement, movementId });
       const movement = await movementSchemaValidation().validateAsync(
         formMovement
       );
