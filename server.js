@@ -14,7 +14,7 @@ app.use("/movements", movementRouter);
 
 // FILES:
 const dbConnect = require("./helpers/db");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 
 app.use("*", (req, res, next) => {
   next(createHttpError.NotFound());

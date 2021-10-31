@@ -11,7 +11,7 @@ async function dbConnect() {
   });
 
   connection.on("connected", () => {
-    console.info("MongoDB connected -> OK");
+    console.info("MongoDB connected -> 🇮🇷 OK");
   });
   connection.on("error", (error) => {
     console.error({
