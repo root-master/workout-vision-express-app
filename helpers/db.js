@@ -1,5 +1,5 @@
 const { connect, connection } = require("mongoose");
-const db = require("../config/keys").mongoURI;
+const MONGODB_URL = process.env.MONGODB_URL;
 
 async function dbConnect() {
   await connect(db, {
@@ -11,7 +11,7 @@ async function dbConnect() {
   });
 
   connection.on("connected", () => {
-    console.info("MongoDB connected -> 🇮🇷 OK");
+    console.info("MongoDB connected -> OK");
   });
   connection.on("error", (error) => {
     console.error({
