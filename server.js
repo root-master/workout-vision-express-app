@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const createHttpError = require("http-errors");
+const dotenv = require('dotenv');
 
 const app = express();
+dotenv.config();
 
 // Routes
 const movementRouter = require("./routes/movement.routes");
