@@ -1,0 +1,47 @@
+@localhost =  http://localhost:5000
+
+
+
+### Create Movement
+POST {{localhost}}/movements
+Content-Type: application/json
+
+{
+   "movementDisplayName": "Pushup - Najme",
+   "videoUrl": "http://www.pushup-najme.com",
+   "videoStartTime": 5,
+   "videoEndTime": 8.2,
+   "videoSource": "youtube",
+   "equipmentList": ["barbel"],
+   "workoutCategoryList": ["strength"]
+}
+
+#### Get All Movements
+GET {{localhost}}/movements
+
+
+### Get a specific movement by movementId
+GET {{localhost}}/movements/6162fa83f3f8e6b924d7f95c
+
+
+### Delete a specific movement by movementId
+DELETE {{localhost}}/movements/61616a473c4fcabea3ecf8a2
+
+
+### Update a specific movment by movementObject and movementId
+PUT {{localhost}}/movements
+Content-Type: application/json
+
+{
+   "movement": {
+      "movementName": "Erfaneeeeee updated",
+      "movementDisplayName": "Erfan PushUp",
+      "videoUrl": "http://www.erfan-pushup.com",
+      "videoStartTime": 5.5,
+      "videoEndTime": 8.6,
+      "videoSource": "Youtube",
+      "equipmentList": ["Pushup"],
+      "workoutCategoryList": ["Strength"]
+   }
+ 
+}
