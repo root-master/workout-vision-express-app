@@ -1,5 +1,5 @@
 const { connect, connection } = require("mongoose");
-const MONGODB_URL = process.env.MONGODB_URL;
+const db = process.env.MONGODB_URL;
 
 async function dbConnect() {
   await connect(db, {
