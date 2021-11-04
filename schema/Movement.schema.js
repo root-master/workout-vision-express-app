@@ -2,14 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const MovementSchema = new Schema(
   {
-    movementName: {
-      type: String,
-      unique: true,
-    },
-    movementDisplayName: {
-      type: String,
-      unique: true,
-    },
+    movementName: String,
+    movementDisplayName: String,
     equipmentList: Array(String),
     videoUrl: String,
     videoSource: String,

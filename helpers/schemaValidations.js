@@ -2,13 +2,12 @@ const Joi = require("joi");
 
 exports.movementSchemaValidation = () => {
   return Joi.object({
-    movementName: Joi.string().min(4).required(),
-    movementDisplayName: Joi.string().min(4).required(),
-    videoUrl: Joi.string().required(),
-    videoStartTime: Joi.number().required(),
-    videoEndTime: Joi.number().required(),
-    videoSource: Joi.string().required(),
-    equipmentList: Joi.array().items(Joi.string()).required(),
-    workoutCategoryList: Joi.array().items(Joi.string()).required(),
+    movementName: Joi.string().optional(),
+    videoUrl: Joi.string().optional(),
+    videoStartTime: Joi.number().optional(),
+    videoEndTime: Joi.number().optional(),
+    videoSource: Joi.string().optional(),
+    equipmentList: Joi.array().items(Joi.string()).optional(),
+    workoutCategoryList: Joi.array().items(Joi.string()).optional(),
   });
 };
