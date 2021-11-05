@@ -1,6 +1,7 @@
 const { movementSchemaValidation } = require("../helpers/schemaValidations");
 const WorkOut = require("../models/workOut.model");
 const createHttpError = require("http-errors");
+const omit = require("lodash/omit");
 
 exports.movementController = {
   getMovements: async (req, res, next) => {
@@ -55,9 +56,10 @@ exports.movementController = {
   },
   updateMovement: async (req, res, next) => {
     try {
+      console.log(req.body);
       const { movement: formMovement, movementId } = req.body;
       const movement = await movementSchemaValidation().validateAsync(
-        formMovement
+        omit(formMovement, ["createdAt", "updatedAt"])
       );
       const updatedMovement = await WorkOut.updateMovementById(
         movement,
