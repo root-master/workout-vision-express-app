@@ -4,8 +4,9 @@
   "description": "Server for the workout.vision client app",
   "main": "server.js",
   "scripts": {
-    "start-node": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start": "node server.js",
+    "build": "echo build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jacob Rafati",
   "license": "MIT",
