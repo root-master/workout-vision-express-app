@@ -56,7 +56,6 @@ exports.movementController = {
   },
   updateMovement: async (req, res, next) => {
     try {
-      console.log(req.body);
       const { movement: formMovement, movementId } = req.body;
       const movement = await movementSchemaValidation().validateAsync(
         omit(formMovement, ["createdAt", "updatedAt"])
