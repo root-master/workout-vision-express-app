@@ -1,6 +1,6 @@
 const MovementDB = require("../schema/Movement.schema");
 
-module.exports = class WorkOut {
+module.exports = class movementModel {
   static async findAllMovements() {
     return await MovementDB.find({});
   }

@@ -1,12 +1,12 @@
 const { movementSchemaValidation } = require("../helpers/schemaValidations");
-const WorkOut = require("../models/workOut.model");
+const movementModel = require("../models/Movement.model");
 const createHttpError = require("http-errors");
 const omit = require("lodash/omit");
 
 exports.movementController = {
   getMovements: async (req, res, next) => {
     try {
-      const allMovements = await WorkOut.findAllMovements();
+      const allMovements = await movementModel.findAllMovements();
       res.status(202).json({ allMovements });
     } catch (error) {
       next(error);
@@ -20,7 +20,7 @@ exports.movementController = {
           abortEarly: true,
         }
       );
-      const newMovement = await WorkOut.postMovement(movementInfo);
+      const newMovement = await movementModel.postMovement(movementInfo);
       res.status(201).json({ newMovementInfo: newMovement });
     } catch (error) {
       if (error.isJoi) {
@@ -35,7 +35,7 @@ exports.movementController = {
       const { movementId } = req.params;
       if (!movementId)
         throw createHttpError.BadRequest("Movement ID not found");
-      const movement = await WorkOut.findMovementById(movementId);
+      const movement = await movementModel.findMovementById(movementId);
       if (!movement) throw createHttpError.NotFound("Movement Not Found");
       res.status(200).json({ success: true, movement });
     } catch (error) {
@@ -47,7 +47,7 @@ exports.movementController = {
       const { movementId } = req.params;
       if (!movementId)
         throw createHttpError.BadRequest("Movement ID not found");
-      const deletedMovement = await WorkOut.deleteMovementById(movementId);
+      const deletedMovement = await movementModel.deleteMovementById(movementId);
       res.status(200).json({ deletedMovement });
       s;
     } catch (error) {
@@ -60,7 +60,7 @@ exports.movementController = {
       const movement = await movementSchemaValidation().validateAsync(
         omit(formMovement, ["createdAt", "updatedAt"])
       );
-      const updatedMovement = await WorkOut.updateMovementById(
+      const updatedMovement = await movementModel.updateMovementById(
         movement,
         movementId
       );
