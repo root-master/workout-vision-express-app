@@ -8,12 +8,12 @@ dotenv.config();
 
 // Routes
 const movementRouter = require("./routes/movement.routes");
-
+const sessionRouter = require("./routes/session.routes");
 // Middlewares
 app.use(express.json());
 app.use(cors());
 app.use("/movements", movementRouter);
-
+app.use("/sessions", sessionRouter);
 // FILES:
 const dbConnect = require("./helpers/db");
 const port = process.env.PORT || 5000;
