@@ -75,62 +75,65 @@ const intensityGoals = Joi.object({
 });
 
 const targetGoals = Joi.object({
-  roundGoals: roundGoals,
-  setGoals: setGoals,
-  repGoals: repGoals,
-  cardioGoals: cardioGoals,
-  weightGoals: weightGoals,
-  targetIntensity: intensityGoals,
+  roundGoals: roundGoals.allow("", null),
+  setGoals: setGoals.allow("", null),
+  repGoals: repGoals.allow("", null),
+  cardioGoals: cardioGoals.allow("", null),
+  weightGoals: weightGoals.allow("", null),
+  targetIntensity: intensityGoals.allow("", null),
 });
 
 const action = Joi.object({
-  showDemoVideo: Joi.boolean().allow("", null).default(true),
-  videoRecording: Joi.boolean().allow("", null).default(true),
-  pauseAtStart: Joi.boolean().allow("", null).default(false),
-  pauseAtEnd: Joi.boolean().allow("", null).default(false),
-  restTime: Joi.number().allow("", null).default(0),
+  showDemoVideo: Joi.boolean().allow("", null),
+  videoRecording: Joi.boolean().allow("", null),
+  pauseAtStart: Joi.boolean().allow("", null),
+  pauseAtEnd: Joi.boolean().allow("", null),
+  restTime: Joi.number().allow("", null),
 });
 
 const roundEntry = Joi.object({
-  entryType: Joi.string().allow("", null).min(3).valid("roundStart", "movement", "roundEnd"),  // should be one of these: roundStart, movement, roundEnd
-  movement: movement,
-  targetGoals: targetGoals,
-  video: video,
-  action: action,
+  // entryType should be one of these: roundStart, movement, roundEnd
+  entryType: Joi.string().allow("", null).min(3).valid("roundStart", "movement", "roundEnd"),  
+  movement: movement.allow("", null),
+  targetGoals: targetGoals.allow("", null),
+  video: video.allow("", null),
+  action: action.allow("", null),
   comment: Joi.string().allow("", null),
 });
 
 const podEntry = Joi.object({
-  entryType: Joi.string().allow("", null).min(3).valid("podStart", "movement", "round", "podEnd"),  // should be one of these: podStart OR round OR movement OR podEnd
+  // entryType should be one of these: podStart OR round OR movement OR podEnd
+  entryType: Joi.string().allow("", null).min(3).valid("podStart", "movement", "round", "podEnd"),  
   round: Joi.array().items(roundEntry).allow("", null),
-  movement: movement,
-  targetGoals: targetGoals,
-  video: video,
-  action: action,
+  movement: movement.allow("", null),
+  targetGoals: targetGoals.allow("", null),
+  video: video.allow("", null),
+  action: action.allow("", null),
   comment: Joi.string().allow("", null),
 });
 
 const sessionEntry = Joi.object({
-  entryType: Joi.string().allow("", null).min(3).valid("pod", "movement", "round"),  // should be one of these: pod OR round OR movement
+  // entryType should be one of these: pod OR round OR movement
+  entryType: Joi.string().allow("", null).min(3).valid("pod", "movement", "round"),  
   pod: Joi.array().items(podEntry).allow("", null),
-  podMetadata: podMetadata,
+  podMetadata: podMetadata.allow("", null),
   round: Joi.array().items(roundEntry).allow("", null),
-  movement: movement,
-  targetGoals: targetGoals,
-  video: video,
-  action: action,
+  movement: movement.allow("", null),
+  targetGoals: targetGoals.allow("", null),
+  video: video.allow("", null),
+  action: action.allow("", null),
   comment: Joi.string().allow("", null),
 });
 
 const sessionStart = Joi.object({
-  video: video,
-  action: action,
+  video: video.allow("", null),
+  action: action.allow("", null),
   comment: Joi.string().allow("", null),
 });
 
 const sessionEnd = Joi.object({
-  video: video,
-  action: action,
+  video: video.allow("", null),
+  action: action.allow("", null),
   comment: Joi.string().allow("", null),
 });
 
