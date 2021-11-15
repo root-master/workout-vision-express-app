@@ -1,9 +1,14 @@
 const { Schema, model } = require("mongoose");
 
-const sessionMetadate = {
-  sessionName: String,
-  workoutCategoryList: Array(String),
-  personalTrainer: String,
+const video = {
+  videoName: String,
+  // videoOwner: String,
+  // personInVideo: String,
+  // personType: String,
+  videoUrl: String,
+  videoSource: String,
+  videoStartTime: Number,
+  videoEndTime: Number
 }
 
 const movement = {
@@ -12,50 +17,43 @@ const movement = {
   workoutCategoryList: Array(String),
 }
 
-const pod = {
+const sessionMetadata = {
+  sessionName: String,
+  workoutCategoryList: Array(String),
+}
+
+const podMetadata = {
   podName: String,
-  podID: String,
-  podStart: Boolean,
-  podEnd: Boolean,
-  podStartComment: String,
-  podEndComment: String,
+  workoutCategoryList: Array(String),
 }
 
-const round = {
-  roundName: String,
-  roundStart: Boolean,
-  roundEnd: Boolean,
-  roundStartComment: String,
-  roundEndComment: String,
-}
-
-roundGoals = {
+const roundGoals = {
   roundNmber: Number,
   roundGoalType: String,
   timeGoalType: String,
   timePerRound: Number,
   roundTotalTime: Number,
-  isDifferentRepsPerRound: Boolean,
+  useDifferentRepsPerRound: Boolean,
   restTimeBetweenRounds: Number
 }
 
-setGoals = {
+const setGoals = {
   setsNumber: Number,
   setsGoalType: String,
   timeGoalType: String,
   timePerSet: Number,
   setsTotalTime: Number,
-  isDifferentRepsPerSet: Boolean,
+  useDifferentRepsPerSet: Boolean,
   restTimeBetweenSets: Number,
 }
 
-repGoals = {
+const repGoals = {
   repsNumber: Number,
   repsPerSetArray: Array(Number),
   repsPerRoundArray: Array(Number),
 }
 
-cardioGoals = {
+const cardioGoals = {
   targetEnergyGoalType: String,
   targetEnergyMeasure: Number,
   energyUnit: String,
@@ -63,7 +61,7 @@ cardioGoals = {
   targetEnergyPerRoundArray: Array(Number),
 }
 
-weightGoals = {
+const weightGoals = {
   targetWeightGoalType: String,
   targetWeightMeasure: Number,
   weightUnit: String,
@@ -71,7 +69,7 @@ weightGoals = {
   targetWeightPerRoundArray: Array(Number),
 }
 
-intensityGoals = {
+const intensityGoals = {
   targetIntensityGoalType: String,
   targetIntensityMeasure: Number,
   weightUnit: String,
@@ -79,7 +77,7 @@ intensityGoals = {
   targetIntensityPerRoundArray: Array(Number),
 }
 
-goals = {
+const targetGoals = {
   roundGoals: roundGoals,
   setGoals: setGoals,
   repGoals: repGoals,
@@ -88,50 +86,76 @@ goals = {
   targetIntensity: intensityGoals,
 }
 
-const video = {
-  videoName: String,
-  videoOwner: String,
-  videoUrl: String,
-  videoSource: String,
-  videoStartTime: Number,
-  videoEndTime: Number
-}
-
 const action = {
   playVideo: Boolean,
-  playDemoVideoBeforeWorkout: Boolean,
-  playDemoVideoDuringWokrout: Boolean,
-  replayUserStream: Boolean,
-  replayUserStreamAfterWorkout: Boolean,
-  showAnalysisAfterWorkout: Boolean,
-  showTextDuringWorkout: Boolean,
-  countDown: Boolean,
-  countDownNumber: Number,
+  // playDemoVideoBeforeWorkout: Boolean,
+  // playDemoVideoDuringWokrout: Boolean,
+  // replayUserStream: Boolean,
+  // replayUserStreamAfterWorkout: Boolean,
+  // showAnalysisAfterWorkout: Boolean,
+  // showTextDuringWorkout: Boolean,
+  // countDown: Boolean,
+  // countDownNumber: Number,
   streamUserVideo: Boolean,
-  userStreamTime: Number,
-  pauseAtTheEnd: Boolean,
-  restTime: Number,  
-  isUserWorkoutTime: Boolean,
-  showGoalsDuringWokrout: Boolean,
-  showGoalsTime: Boolean,
-  showTimer: Boolean, 
+  // userStreamTime: Number,
+  pauseAtStart: Boolean,
+  pauseAtEnd: Boolean,
+  // restTime: Number,  
+  // shouldUserWorkoutAfterVideo: Boolean,
+  // showGoalsDuringWokrout: Boolean,
+  // showGoalsTime: Boolean,
+  // showTimer: Boolean, 
 }
 
-const event = {
-  eventName: String,
-  eventID: String,
-  pod: pod,
-  round: round,
+const roundEntry = {
+  entryType: String,  // roundStart, movementInsideRound, roundEnd
   movement: movement,
-  goals: goals,
+  targetGoals: targetGoals,
   video: video,
   action: action,
+  comment: String,
+}
+
+const podEntry = {
+  entryType: String,  // podStart, roundInsidePod, movementInsidePod, podEnd
+  round: Array(roundEntry),
+  podMetadata: podMetadata,
+  movement: movement,
+  targetGoals: targetGoals,
+  video: video,
+  action: action,
+  comment: String,
+}
+
+const sessionEntry = {
+  entryType: String,  // pod, round, movement
+  pod: Array(podEntry),
+  round: Array(roundEntry),
+  movement: movement,
+  targetGoals: targetGoals,
+  video: video,
+  action: action,
+  comment: String,
+}
+
+const sessionStart = {
+  sessionMetadata: sessionMetadata,
+  video: video,
+  action: action,
+  comment: String,
+}
+
+const sessionEnd = {
+  video: video,
+  action: action,
+  comment: String,
 }
 
 const SessionSchema = new Schema(
   {
-    sessionMetadate: sessionMetadate,
-    sessionEventList: Array(event),
+    sessionStart: sessionStart,
+    sessionItemsList: Array(sessionEntry),
+    sessionEnd: sessionEnd,
   },
   { timestamps: true }
 );
