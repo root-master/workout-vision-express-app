@@ -26,10 +26,11 @@ const movement = Joi.object({
 
 const roundGoals = Joi.object({
   roundsNmber: Joi.number().allow("", null),
-  roundGoalType: Joi.string().allow("", null),
+  roundsGoalType: Joi.string().allow("", null),
   timeGoalType: Joi.string().allow("", null),
   timePerRound: Joi.number().allow("", null),
   roundsTotalTime: Joi.number().allow("", null),
+  timeUnit: Joi.string().allow("", null).valid("Seconds", "Minutes"),
   useDifferentRepsPerRound: Joi.boolean().allow("", null),
   restTimeBetweenRounds: Joi.number().allow("", null),
 });
@@ -40,6 +41,7 @@ const setGoals = Joi.object({
   timeGoalType: Joi.string().allow("", null),
   timePerSet: Joi.number().allow("", null),
   setsTotalTime: Joi.number().allow("", null),
+  timeUnit: Joi.string().allow("", null).valid("Seconds", "Minutes"),
   useDifferentRepsPerSet: Joi.boolean().allow("", null),
   restTimeBetweenSets: Joi.number().allow("", null),
 });
@@ -51,7 +53,6 @@ const repGoals = Joi.object({
 });
 
 const cardioGoals = Joi.object({
-  targetEnergyGoalType: Joi.string().allow("", null),
   targetEnergyMeasure: Joi.number().allow("", null),
   energyUnit: Joi.string().allow("", null),
   targetEnergyPerSetArray: Joi.array().items(Joi.number()).allow("", null),
@@ -59,7 +60,6 @@ const cardioGoals = Joi.object({
 });
 
 const weightGoals = Joi.object({
-  targetWeightGoalType: Joi.string().allow("", null),
   targetWeightMeasure: Joi.number().allow("", null),
   weightUnit: Joi.string().allow("", null),
   targetWeightPerSetArray: Joi.array().items(Joi.number()).allow("", null),
@@ -67,9 +67,7 @@ const weightGoals = Joi.object({
 });
 
 const intensityGoals = Joi.object({
-  targetIntensityGoalType: Joi.string().allow("", null),
   targetIntensityMeasure: Joi.number().allow("", null),
-  weightUnit: Joi.string().allow("", null),
   targetIntensityPerSetArray: Joi.array().items(Joi.number()).allow("", null),
   targetIntensityPerRoundArray: Joi.array().items(Joi.number()).allow("", null),
 });
@@ -84,16 +82,12 @@ const targetGoals = Joi.object({
 });
 
 const action = Joi.object({
-  showDemoVideo: Joi.boolean().allow("", null),
-  videoRecording: Joi.boolean().allow("", null),
-  pauseAtStart: Joi.boolean().allow("", null),
-  pauseAtEnd: Joi.boolean().allow("", null),
-  restTime: Joi.number().allow("", null),
+  playVideo: Joi.boolean().allow("", null),
+  streamUserVideo: Joi.boolean().allow("", null),
 });
 
 const roundEntry = Joi.object({
-  // roundEntryType should be one of these: roundStart, movement, roundEnd
-  roundEntryType: Joi.string().allow("", null).min(3).valid("roundStart", "movement", "roundEnd"),  
+  roundEntryType: Joi.string().allow("", null).min(3).valid("movement", "video"),  
   movement: movement.allow("", null),
   targetGoals: targetGoals.allow("", null),
   video: video.allow("", null),
@@ -102,8 +96,7 @@ const roundEntry = Joi.object({
 });
 
 const podEntry = Joi.object({
-  // podEntryType should be one of these: podStart OR round OR movement OR podEnd
-  podEntryType: Joi.string().allow("", null).min(3).valid("podStart", "movement", "round", "podEnd"),  
+  podEntryType: Joi.string().allow("", null).min(3).valid("movement", "round", "video"),  
   round: Joi.array().items(roundEntry).allow("", null),
   movement: movement.allow("", null),
   targetGoals: targetGoals.allow("", null),
@@ -113,8 +106,7 @@ const podEntry = Joi.object({
 });
 
 const sessionEntry = Joi.object({
-  // sessionEntryType should be one of these: pod OR round OR movement
-  sessionEntryType: Joi.string().allow("", null).min(3).valid("pod", "movement", "round"),  
+  sessionEntryType: Joi.string().allow("", null).min(3).valid("pod", "movement", "round", "video"),  
   pod: Joi.array().items(podEntry).allow("", null),
   podMetadata: podMetadata.allow("", null),
   round: Joi.array().items(roundEntry).allow("", null),
@@ -125,24 +117,10 @@ const sessionEntry = Joi.object({
   comment: Joi.string().allow("", null),
 });
 
-const sessionStart = Joi.object({
-  video: video.allow("", null),
-  action: action.allow("", null),
-  comment: Joi.string().allow("", null),
-});
-
-const sessionEnd = Joi.object({
-  video: video.allow("", null),
-  action: action.allow("", null),
-  comment: Joi.string().allow("", null),
-});
-
 
 const SessionSchema =  Joi.object({
     sessionMetadata: sessionMetadata.allow("", null),
-    sessionStart: sessionStart.allow("", null),
     sessionEntryList: Joi.array().items(sessionEntry).allow("", null),
-    sessionEnd: sessionEnd.allow("", null),
 });
 
 exports.sessionSchemaValidation = () => {

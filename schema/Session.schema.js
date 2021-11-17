@@ -1,10 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const video = {  // form
-  // videoName: String,
-  // videoOwner: String,
-  // personInVideo: String,
-  // personType: String,
   videoUrl: String,
   videoSource: String,
   videoStartTime: Number,
@@ -30,10 +26,11 @@ const podMetadata = {  // form
 
 const roundGoals = {  // form
   roundsNmber: Number,
-  roundGoalType: String,
+  roundsGoalType: String,
   timeGoalType: String,
   timePerRound: Number,
   roundsTotalTime: Number,
+  timeUnit: String,
   useDifferentRepsPerRound: Boolean,
   restTimeBetweenRounds: Number,
 }
@@ -44,6 +41,7 @@ const setGoals = {  // form
   timeGoalType: String,
   timePerSet: Number,
   setsTotalTime: Number,
+  timeUnit: String,
   useDifferentRepsPerSet: Boolean,
   restTimeBetweenSets: Number,
 }
@@ -55,7 +53,6 @@ const repGoals = {  // form
 }
 
 const cardioGoals = {  // form
-  targetEnergyGoalType: String,
   targetEnergyMeasure: Number,
   energyUnit: String,
   targetEnergyPerSetArray: Array(Number),
@@ -63,7 +60,6 @@ const cardioGoals = {  // form
 }
 
 const weightGoals = {  // form
-  targetWeightGoalType: String,
   targetWeightMeasure: Number,
   weightUnit: String,
   targetWeightPerSetArray: Array(Number),
@@ -71,9 +67,7 @@ const weightGoals = {  // form
 }
 
 const intensityGoals = {  // form
-  targetIntensityGoalType: String,
   targetIntensityMeasure: Number,
-  weightUnit: String,
   targetIntensityPerSetArray: Array(Number),
   targetIntensityPerRoundArray: Array(Number),
 }
@@ -88,28 +82,12 @@ const targetGoals = {  // form
 }
 
 const action = {  // form
-  showDemoVideo: Boolean,
-  // playDemoVideoBeforeWorkout: Boolean,
-  // playDemoVideoDuringWokrout: Boolean,
-  // replayUserStream: Boolean,
-  // replayUserStreamAfterWorkout: Boolean,
-  // showAnalysisAfterWorkout: Boolean,
-  // showTextDuringWorkout: Boolean,
-  // countDown: Boolean,
-  // countDownNumber: Number,
-  videoRecording: Boolean,
-  // userStreamTime: Number,
-  pauseAtStart: Boolean,
-  pauseAtEnd: Boolean,
-  restTime: Number,  
-  // shouldUserWorkoutAfterVideo: Boolean,
-  // showGoalsDuringWokrout: Boolean,
-  // showGoalsTime: Boolean,
-  // showTimer: Boolean, 
+  playVideo: Boolean,
+  streamUserVideo: Boolean,
 }
 
 const roundEntry = {
-  entryType: String,  // roundStart, movement, roundEnd
+  roundEntryType: String,  // movement, video
   movement: movement,
   targetGoals: targetGoals,
   video: video,
@@ -118,7 +96,7 @@ const roundEntry = {
 }
 
 const podEntry = {
-  entryType: String,  // podStart, round, movement, podEnd
+  podEntryType: String,  // round, movement, video
   round: Array(roundEntry),
   movement: movement,
   targetGoals: targetGoals,
@@ -128,7 +106,7 @@ const podEntry = {
 }
 
 const sessionEntry = {
-  entryType: String,  // pod, round, movement
+  sessionEntryType: String,  // pod, round, movement, video
   pod: Array(podEntry),
   podMetadata: podMetadata,
   round: Array(roundEntry),
@@ -139,24 +117,10 @@ const sessionEntry = {
   comment: String,
 }
 
-const sessionStart = {
-  video: video,
-  action: action,
-  comment: String,
-}
-
-const sessionEnd = {
-  video: video,
-  action: action,
-  comment: String,
-}
-
 const SessionSchema = new Schema(
   {
     sessionMetadata: sessionMetadata,
-    sessionStart: sessionStart,
     sessionEntryList: Array(sessionEntry),
-    sessionEnd: sessionEnd,
   },
   { timestamps: true }
 );
