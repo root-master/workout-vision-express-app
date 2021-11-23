@@ -117,6 +117,11 @@ const sessionEntry = {
   comment: String,
 }
 
+const session = {
+  sessionMetadata: sessionMetadata,
+  sessionEntryList: Array(sessionEntry)
+}
+
 const SessionSchema = new Schema(
   {
     sessionMetadata: sessionMetadata,
