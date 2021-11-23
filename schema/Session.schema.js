@@ -123,10 +123,7 @@ const session = {
 }
 
 const SessionSchema = new Schema(
-  {
-    sessionMetadata: sessionMetadata,
-    sessionEntryList: Array(sessionEntry)
-  },
+  session,
   { timestamps: true }
 );
 
