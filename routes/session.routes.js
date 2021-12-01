@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", sessionController.getSessions);
 
-router.get("/:sessoinId", sessionController.getSession);
+router.get("/:sessionId", sessionController.getSession);
 
 router.post("/", sessionController.postSession);
 

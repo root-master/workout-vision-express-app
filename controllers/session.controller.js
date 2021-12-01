@@ -57,7 +57,7 @@ exports.sessionController = {
   updateSession: async (req, res, next) => {
     try {
       const { session: formSession, sessiontId } = req.body;
-      const session = await movementSchemaValidation().validateAsync(
+      const session = await sessionSchemaValidation().validateAsync(
         omit(formSession, ["createdAt", "updatedAt"])
       );
       const updatedSession = await sessionModel.updateSessionById(
