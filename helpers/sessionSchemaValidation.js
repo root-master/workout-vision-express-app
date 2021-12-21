@@ -78,7 +78,7 @@ const targetGoals = Joi.object({
   repGoals: repGoals.allow("", null),
   cardioGoals: cardioGoals.allow("", null),
   weightGoals: weightGoals.allow("", null),
-  targetIntensity: intensityGoals.allow("", null),
+  intensityGoals: intensityGoals.allow("", null),
 });
 
 const action = Joi.object({

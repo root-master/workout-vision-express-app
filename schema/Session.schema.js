@@ -78,7 +78,7 @@ const targetGoals = {  // form
   repGoals: repGoals,
   cardioGoals: cardioGoals,
   weightGoals: weightGoals,
-  targetIntensity: intensityGoals,
+  intensityGoals: intensityGoals,
 }
 
 const action = {  // form
