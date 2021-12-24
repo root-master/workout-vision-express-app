@@ -22,9 +22,13 @@ const movement = Joi.object({
   movementName: Joi.string().allow("", null),
   equipmentList: Joi.array().items(Joi.string()).allow("", null),
   workoutCategoryList: Joi.array().items(Joi.string()).allow("", null),
+  videoUrl: Joi.string().allow("", null),
+  videoSource: Joi.string().allow("", null),
+  videoStartTime: Joi.number().allow("", null),
+  videoEndTime: Joi.number().allow("", null),
 });
 
-const roundGoals = Joi.object({
+const roundsGoals = Joi.object({
   roundsNmber: Joi.number().allow("", null),
   roundsGoalType: Joi.string().allow("", null),
   timeGoalType: Joi.string().allow("", null),
@@ -35,7 +39,7 @@ const roundGoals = Joi.object({
   restTimeBetweenRounds: Joi.number().allow("", null),
 });
 
-const setGoals = Joi.object({
+const setsGoals = Joi.object({
   setsNumber: Joi.number().allow("", null),
   setsGoalType: Joi.string().allow("", null),
   timeGoalType: Joi.string().allow("", null),
@@ -46,7 +50,7 @@ const setGoals = Joi.object({
   restTimeBetweenSets: Joi.number().allow("", null),
 });
 
-const repGoals = Joi.object({
+const repsGoals = Joi.object({
   repsNumber: Joi.number().allow("", null),
   repsPerSetArray: Joi.array().items(Joi.number()).allow("", null),
   repsPerRoundArray: Joi.array().items(Joi.number()).allow("", null),
@@ -73,9 +77,9 @@ const intensityGoals = Joi.object({
 });
 
 const targetGoals = Joi.object({
-  roundGoals: roundGoals.allow("", null),
-  setGoals: setGoals.allow("", null),
-  repGoals: repGoals.allow("", null),
+  roundGoals: roundsGoals.allow("", null),
+  setsGoals: setsGoals.allow("", null),
+  repsGoals: repsGoals.allow("", null),
   cardioGoals: cardioGoals.allow("", null),
   weightGoals: weightGoals.allow("", null),
   intensityGoals: intensityGoals.allow("", null),
