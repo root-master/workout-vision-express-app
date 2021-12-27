@@ -11,6 +11,10 @@ const movement = {  // form -- This already exists with video fields
   movementName: String,
   equipmentList: Array(String),
   workoutCategoryList: Array(String),
+  videoUrl: String,
+  videoSource: String,
+  videoStartTime: Number,
+  videoEndTime: Number
 }
 
 const sessionMetadata = {  // form
@@ -24,7 +28,7 @@ const podMetadata = {  // form
   workoutCategoryList: Array(String),
 }
 
-const roundGoals = {  // form
+const roundsGoals = {  // form
   roundsNmber: Number,
   roundsGoalType: String,
   timeGoalType: String,
@@ -35,7 +39,7 @@ const roundGoals = {  // form
   restTimeBetweenRounds: Number,
 }
 
-const setGoals = {  // form
+const setsGoals = {  // form
   setsNumber: Number,
   setsGoalType: String,
   timeGoalType: String,
@@ -46,7 +50,7 @@ const setGoals = {  // form
   restTimeBetweenSets: Number,
 }
 
-const repGoals = {  // form
+const repsGoals = {  // form
   repsNumber: Number,
   repsPerSetArray: Array(Number),
   repsPerRoundArray: Array(Number),
@@ -73,12 +77,12 @@ const intensityGoals = {  // form
 }
 
 const targetGoals = {  // form
-  roundGoals: roundGoals,
-  setGoals: setGoals,
-  repGoals: repGoals,
+  roundsGoals: roundsGoals,
+  setsGoals: setsGoals,
+  repsGoals: repsGoals,
   cardioGoals: cardioGoals,
   weightGoals: weightGoals,
-  targetIntensity: intensityGoals,
+  intensityGoals: intensityGoals,
 }
 
 const action = {  // form
