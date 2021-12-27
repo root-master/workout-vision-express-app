@@ -34,7 +34,7 @@ const roundsGoals = Joi.object({
   timeGoalType: Joi.string().allow("", null),
   timePerRound: Joi.number().allow("", null),
   roundsTotalTime: Joi.number().allow("", null),
-  timeUnit: Joi.string().allow("", null).valid("Seconds", "Minutes"),
+  timeUnit: Joi.string().allow("", null).valid("seconds", "minutes"),
   useDifferentRepsPerRound: Joi.boolean().allow("", null),
   restTimeBetweenRounds: Joi.number().allow("", null),
 });
@@ -45,7 +45,7 @@ const setsGoals = Joi.object({
   timeGoalType: Joi.string().allow("", null),
   timePerSet: Joi.number().allow("", null),
   setsTotalTime: Joi.number().allow("", null),
-  timeUnit: Joi.string().allow("", null).valid("Seconds", "Minutes"),
+  timeUnit: Joi.string().allow("", null).valid("seconds", "minutes"),
   useDifferentRepsPerSet: Joi.boolean().allow("", null),
   restTimeBetweenSets: Joi.number().allow("", null),
 });
