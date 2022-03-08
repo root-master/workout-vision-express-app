@@ -6,13 +6,13 @@ const omit = require("lodash/omit");
 exports.userSessionController = {
   getUserSessions: async (req, res, next) => {
     try {
-      const allUserSessions = await userSessionModel.findAlluserSessions();
+      const allUserSessions = await userSessionModel.findAllUserSessions();
       res.status(202).json({ allUserSessions });
     } catch (error) {
       next(error);
     }
   },
-  postuserSession: async (req, res, next) => {
+  postUserSession: async (req, res, next) => {
     try {
       const userSessionData = await userSessionSchemaValidation().validateAsync(
         req.body,
@@ -20,8 +20,8 @@ exports.userSessionController = {
           abortEarly: true,
         }
       );
-      const newUserSession = await userSessionModel.postuserSession(userSessionData);
-      res.status(201).json({ newuserSessionData: newUserSession });
+      const newUserSession = await userSessionModel.postUserSession(userSessionData);
+      res.status(201).json({ newUerSessionData: newUserSession });
     } catch (error) {
       if (error.isJoi) {
         next(createHttpError.BadRequest(error.message));
@@ -30,37 +30,37 @@ exports.userSessionController = {
       }
     }
   },
-  getuserSession: async (req, res, next) => {
+  getUserSession: async (req, res, next) => {
     try {
       const { userSessionId } = req.params;
       if (!userSessionId)
         throw createHttpError.BadRequest("userSession ID not found");
-      const userSession = await userSessionModel.finduserSessionById(userSessionId);
+      const userSession = await userSessionModel.findUserSessionById(userSessionId);
       if (!userSession) throw createHttpError.NotFound("userSession Not Found");
       res.status(200).json({ success: true, userSession });
     } catch (error) {
       next(error);
     }
   },
-  deleteuserSession: async (req, res, next) => {
+  deleteUserSession: async (req, res, next) => {
     try {
       const { userSessionId } = req.params;
       if (!userSessionId)
         throw createHttpError.BadRequest("userSession ID not found");
-      const deletedUserSession = await userSessionModel.deleteuserSessionById(userSessionId);
+      const deletedUserSession = await userSessionModel.deleteUserSessionById(userSessionId);
       res.status(200).json({ deletedUserSession });
       s;
     } catch (error) {
       next(error);
     }
   },
-  updateuserSession: async (req, res, next) => {
+  updateUserSession: async (req, res, next) => {
     try {
       const { userSession: formUserSession, userSessiontId } = req.body;
       const userSession = await userSessionSchemaValidation().validateAsync(
         omit(formUserSession, ["createdAt", "updatedAt"])
       );
-      const updatedUserSession = await userSessionModel.updateuserSessionById(
+      const updatedUserSession = await userSessionModel.updateUserSessionById(
         userSession,
         userSessiontId
       );

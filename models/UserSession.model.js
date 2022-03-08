@@ -1,4 +1,4 @@
-const userSessionDB = require("../schema/userSession.schema");
+const userSessionDB = require("../schema/UserSession.schema");
 
 module.exports = class userSessionModel {
   static async findAllUserSessions() {
