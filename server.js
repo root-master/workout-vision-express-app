@@ -18,7 +18,7 @@ app.use("/sessions", sessionRouter);
 app.use("/user_sessions", userSessionRouter);
 // FILES:
 const dbConnect = require("./helpers/db");
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 8081;
 
 app.use("*", (req, res, next) => {
   next(createHttpError.NotFound());
