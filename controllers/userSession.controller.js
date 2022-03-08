@@ -1,5 +1,5 @@
 const { userSessionSchemaValidation } = require("../helpers/userSessionSchemaValidation");
-const userSessionModel = require("../models/userSession.model");
+const userSessionModel = require("../models/UserSession.model");
 const createHttpError = require("http-errors");
 const omit = require("lodash/omit");
 
