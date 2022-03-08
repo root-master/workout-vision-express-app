@@ -104,4 +104,4 @@ const userSessionSchema = Joi.object({
 
 exports.userSessionSchemaValidation = () => {
     return userSessionSchema
-  };
+};
