@@ -116,9 +116,14 @@ const userFeaturesFlaskJob = {
     job_id: String
 }
 
+const userPoseEstimationJSONFile = {
+    bucket: String,
+    key: String,
+}
+
 const userFeature = {
     user_session: userSession,
-    user_pose_features_json_file: String,
+    user_pose_features_json_file: userPoseEstimationJSONFile,
     user_feature_flask_job: userFeaturesFlaskJob,
     user_visualization_video: visualizationVideo,
     user_movement_analysis_result : userMovementAnalysisResult

@@ -18,16 +18,6 @@ const userVideo = Joi.object({
     key: Joi.string().allow("", null)
 });
 
-const visualizationVideo = Joi.object({
-    bucket: Joi.string().allow("", null),
-    key: Joi.string().allow("", null)
-});
-
-const userMovementAnalysisResult = Joi.object({
-    comment: Joi.string().allow("", null)
-});
-
-
 const movement = Joi.object({
     movementName: Joi.string().allow("", null),
     equipmentList: Joi.array().items(Joi.string()).allow("", null),
@@ -100,7 +90,7 @@ const sessionState = Joi.object({
     roundNumber: Joi.number().allow("", null)
 });
 
-const userSession = Joi.object({
+const userSessionSchema = Joi.object({
     movement: movement.allow("", null),
     user: user.allow("", null),
     user_video: userVideo.allow("", null),
@@ -112,19 +102,6 @@ const userSession = Joi.object({
     session_state: sessionState.allow("", null)
 });
 
-const userFeaturesFlaskJob = Joi.object({
-    status: Joi.string().allow("", null),
-    job_id: Joi.string().allow("", null),
-});
-
-const userFeatureSchema = Joi.object({
-    user_session: userSession.allow("", null),
-    user_pose_features_json_file: Joi.string().allow("", null),
-    user_features_flask_job: userFeaturesFlaskJob.allow("", null),
-    user_visualization_video: visualizationVideo.allow("", null),
-    user_movement_analysis_result : userMovementAnalysisResult.allow("", null)
-});
-
 exports.userSessionSchemaValidation = () => {
-    return userFeatureSchema
+    return userSessionSchema
 };
