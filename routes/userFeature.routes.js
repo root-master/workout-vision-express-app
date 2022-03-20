@@ -4,11 +4,11 @@ const router = express.Router();
 
 router.get("/", userFeatureController.getUserFeatures);
 
-router.get("/:userSessionId", userFeatureController.getUserFeature);
+router.get("/:userFeatureId", userFeatureController.getUserFeature);
 
 router.post("/", userFeatureController.postUserFeature);
 
-router.delete("/:userSessionId", userFeatureController.deleteUserFeature);
+router.delete("/:userFeatureId", userFeatureController.deleteUserFeature);
 
 router.put("/", userFeatureController.updateUserFeature);
 
