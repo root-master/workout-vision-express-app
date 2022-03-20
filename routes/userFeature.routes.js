@@ -1,5 +1,5 @@
 const express = require("express");
-const { userSessionController } = require("../controllers/userFeature.controller");
+const { userFeatureController } = require("../controllers/userFeature.controller");
 const router = express.Router();
 
 router.get("/", userFeatureController.getUserFeatures);
