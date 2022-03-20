@@ -15,11 +15,6 @@ const userVideo = {
     key: String,
 };
 
-const visualizationVideo = {
-    bucket: String,
-    key: String,
-}
-
 const user = {
     email: String,
     email_verified: Boolean,
@@ -107,13 +102,24 @@ const userSession = {
     session_state: sessionState
 };
 
+const visualizationVideo = {
+    bucket: String,
+    key: String,
+}
+
 const userMovementAnalysisResult = {
     comment: String
+}
+
+const userFeaturesFlaskJob = {
+    status: String,
+    job_id: String
 }
 
 const userFeature = {
     user_session: userSession,
     user_pose_features_json_file: String,
+    user_feature_flask_job: userFeaturesFlaskJob,
     user_visualization_video: visualizationVideo,
     user_movement_analysis_result : userMovementAnalysisResult
 
