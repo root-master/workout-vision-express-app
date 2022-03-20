@@ -56,13 +56,13 @@ exports.userSessionController = {
   },
   updateUserSession: async (req, res, next) => {
     try {
-      const { userSession: formUserSession, userSessiontId } = req.body;
+      const { userSession: formUserSession, userSessionId } = req.body;
       const userSession = await userSessionSchemaValidation().validateAsync(
         omit(formUserSession, ["createdAt", "updatedAt"])
       );
       const updatedUserSession = await userSessionModel.updateUserSessionById(
         userSession,
-        userSessiontId
+        userSessionId
       );
       if (!updatedUserSession)
         throw createHttpError.NotFound("userSession Not Found");
