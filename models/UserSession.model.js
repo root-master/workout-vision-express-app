@@ -14,7 +14,7 @@ module.exports = class userSessionModel {
   }
 
   static async findUserSessionByUserId(userId) {
-    return await userSessionDB.find( {"user.sub": userId} );
+    return await userSessionDB.find( {"user.sub": userId} ).sort( {"createdAt": -1} );
   }
 
   static async deleteUserSessionById(userSessionId) {
