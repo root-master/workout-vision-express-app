@@ -6,6 +6,8 @@ router.get("/", userSessionController.getUserSessions);
 
 router.get("/:userSessionId", userSessionController.getUserSession);
 
+router.get("/user_id/:userId", userSessionController.getUserSessionsByUserId);
+
 router.post("/", userSessionController.postUserSession);
 
 router.delete("/:userSessionId", userSessionController.deleteUserSession);

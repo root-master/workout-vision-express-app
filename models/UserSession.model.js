@@ -13,6 +13,10 @@ module.exports = class userSessionModel {
     return await userSessionDB.findById(userSessionId, { _id: 0, __v: 0 });
   }
 
+  static async findUserSessionByUserId(userId) {
+    return await userSessionDB.find( {"user.sub": userId} );
+  }
+
   static async deleteUserSessionById(userSessionId) {
     return await userSessionDB.findByIdAndDelete(userSessionId);
   }

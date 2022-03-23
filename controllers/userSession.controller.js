@@ -12,6 +12,18 @@ exports.userSessionController = {
       next(error);
     }
   },
+  getUserSessionsByUserId: async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+      if (!userId)
+        throw createHttpError.BadRequest("userID is required");
+      const allUserSessions = await userSessionModel.findUserSessionByUserId(userId);
+      if (!userId) throw createHttpError.NotFound("userId Not Found");
+      res.status(202).json({ allUserSessions });
+    } catch (error) {
+      next(error);
+    }
+  },
   postUserSession: async (req, res, next) => {
     try {
       const userSessionData = await userSessionSchemaValidation().validateAsync(
