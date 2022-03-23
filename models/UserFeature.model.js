@@ -14,7 +14,7 @@ module.exports = class userFeatureModel {
   }
 
   static async findUserFeatureByUserVideoId(userVideoId) {
-    return await userFeatureDB.find({"user_video_id": userVideoId});
+    return await userFeatureDB.findOne({"user_video_id": userVideoId});
   }
 
   static async deleteUserFeatureById(userFeatureId) {
