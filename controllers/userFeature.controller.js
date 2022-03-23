@@ -42,6 +42,18 @@ exports.userFeatureController = {
       next(error);
     }
   },
+  getUserFeatureByUserVideoID: async (req, res, next) => {
+    try {
+      const { userVideoId } = req.params;
+      if (!userVideoId)
+        throw createHttpError.BadRequest("userVideoID not found");
+      const userFeature = await userFeatureModel.findUserFeatureByUserVideoId(userVideoId);
+      if (!userVideoId) throw createHttpError.NotFound("userVideoID not found");
+      res.status(200).json({ success: true, userFeature });
+    } catch (error) {
+      next(error);
+    }
+  },
   deleteUserFeature: async (req, res, next) => {
     try {
       const { userFeatureId } = req.params;

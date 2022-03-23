@@ -6,6 +6,8 @@ router.get("/", userFeatureController.getUserFeatures);
 
 router.get("/:userFeatureId", userFeatureController.getUserFeature);
 
+router.get("/user_video_id/:userVideoId", userFeatureController.getUserFeatureByUserVideoID);
+
 router.post("/", userFeatureController.postUserFeature);
 
 router.delete("/:userFeatureId", userFeatureController.deleteUserFeature);
