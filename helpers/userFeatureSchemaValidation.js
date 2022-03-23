@@ -105,6 +105,7 @@ const userSession = Joi.object({
     user_video: userVideo.allow("", null),
     user_looper_session_id: Joi.string().allow("", null),  // unique to the looper run
     session_id: Joi.string().allow("", null),  // workout session ID if the session id launched from /sessions 
+    user_video_id: Joi.string().allow("", null),
     timestamp_start: Joi.number().allow("", null),
     timestamp_end: Joi.number().allow("", null),
     target_goals: targetGoals.allow("", null),
@@ -126,7 +127,8 @@ const userFeatureSchema = Joi.object({
     user_pose_features_json_file: userPoseEstimationJSONFile.allow("", null),
     user_feature_flask_job: userFeaturesFlaskJob.allow("", null),
     user_visualization_video: visualizationVideo.allow("", null),
-    user_movement_analysis_result : userMovementAnalysisResult.allow("", null)
+    user_movement_analysis_result : userMovementAnalysisResult.allow("", null),
+    user_video_id: Joi.string().allow("", null)
 });
 
 exports.userFeatureSchemaValidation = () => {

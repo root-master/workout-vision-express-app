@@ -96,6 +96,7 @@ const userSession = {
     user_video: userVideo,
     user_looper_session_id: String,
     session_id: String,
+    user_video_id: String,
     timestamp_start: Number,
     timestamp_end: Number,
     target_goals: targetGoals,
@@ -126,8 +127,8 @@ const userFeature = {
     user_pose_features_json_file: userPoseEstimationJSONFile,
     user_feature_flask_job: userFeaturesFlaskJob,
     user_visualization_video: visualizationVideo,
-    user_movement_analysis_result : userMovementAnalysisResult
-
+    user_movement_analysis_result : userMovementAnalysisResult,
+    user_video_id: String
 }
 
 const UserFeatureSchema = new Schema(

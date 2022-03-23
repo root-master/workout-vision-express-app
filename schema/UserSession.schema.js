@@ -95,6 +95,7 @@ const userSession = {
     user: user,
     user_video: userVideo,
     user_looper_session_id: String,
+    user_video_id: String,
     session_id: String,
     timestamp_start: Number,
     timestamp_end: Number,
