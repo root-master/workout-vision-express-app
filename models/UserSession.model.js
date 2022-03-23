@@ -2,7 +2,7 @@ const userSessionDB = require("../schema/UserSession.schema");
 
 module.exports = class userSessionModel {
   static async findAllUserSessions() {
-    return await userSessionDB.find({});
+    return await userSessionDB.find({}).sort( {"createdAt": -1} );
   }
 
   static async postUserSession(newUserSession) {
