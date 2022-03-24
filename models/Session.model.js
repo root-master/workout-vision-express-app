@@ -2,7 +2,7 @@ const SessionDB = require("../schema/Session.schema");
 
 module.exports = class sessionModel {
   static async findAllSessions() {
-    return await SessionDB.find({});
+    return await SessionDB.find({}).sort({"sessionMetadata.sessionName": 1});
   }
 
   static async postSession(newSession) {
