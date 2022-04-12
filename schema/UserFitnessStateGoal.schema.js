@@ -110,8 +110,22 @@ const activity = {
     workout_intensity_level: Number,
 }
 
+const user = {
+    email: String,
+    email_verified: Boolean,
+    family_name: String,
+    given_name: String,
+    locale: String,
+    name: String,
+    nickname: String,
+    picture: String,
+    sub: String,
+};
+
+
 const userFitnessStateGoal = {
-    body_physical_measurement: bodyBasicPhysicalMeasurement,
+    user: user,
+    body_physical_measurement: bodyPhysicalMeasurement,
     weight_goals: weightGoals,
     current_fitness_level: currentFitnessLevel,
     fitness_goals: fitnessGoals,
