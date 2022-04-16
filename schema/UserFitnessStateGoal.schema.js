@@ -2,17 +2,17 @@ const { Schema, model } = require("mongoose");
 
 const bodyPhysicalMeasurement = {
     age: Number,
-    gender: Number,
+    gender: String,
     weight: Number,
-    weight_unit: Number,
+    weight_unit: String,
     height: Number,
-    height_unit: Number
+    height_unit: String
 }
 
 const weightGoals = {
     weight_goal: String,
     target_weight: Number,
-    weight_unit: Number,
+    weight_unit: String,
 }
 
 const currentFitnessLevel = {
@@ -25,8 +25,8 @@ const currentFitnessLevel = {
     agility: Number,
     core_strength: Number,
     energy_level: Number,
-    pose: Number,
-    diet: Number,
+    pose_quality: Number,
+    diet_quality: Number,
 }
 
 const fitnessGoals = {
@@ -101,13 +101,16 @@ const StrenghtAreaLevel = {
     abs: Number,
     lower_back: Number,
     upper_back: Number,
+    butt_hips: Number,
+    legs_thighs: Number,
+    legs_calves: Number,
 }
 
 const activity = {
-    num_sessions_per_week: Number,
-    num_hours_per_week: Number,
-    activity_level: Number,
+    num_workout_days_per_week: Number,
+    num_hours_per_workout_day: Number,
     workout_intensity_level: Number,
+    workout_difficulty_level: Number,
 }
 
 const user = {
@@ -122,20 +125,26 @@ const user = {
     sub: String,
 };
 
+const availableEquipments = {
+    "home": { type: Array, default: undefined },
+    "gym": { type: Array, default: undefined }
+}
+
 
 const userFitnessStateGoal = {
     user: user,
     body_physical_measurement: bodyPhysicalMeasurement,
     weight_goals: weightGoals,
     current_fitness_level: currentFitnessLevel,
-    fitness_goals: fitnessGoals,
+    target_fitness_goals_level: fitnessGoals,
     current_pain_level: painAreaLevel,
     current_strength_level: StrenghtAreaLevel,
     target_strength_level: StrenghtAreaLevel,
     current_mobility_level: mobilityAreaLevel,
     target_mobility_level: mobilityAreaLevel,
     current_activity: activity,
-    target_activity: activity
+    target_activity: activity,
+    available_equipments: availableEquipments,
 }
 
 const UserFitnessStateGoalSchema = new Schema(
