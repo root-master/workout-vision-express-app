@@ -10,108 +10,78 @@ const bodyPhysicalMeasurement = {
 }
 
 const weightGoals = {
-    weight_goal: String,
+    weight_change_goal: String,
+    pace_of_change: String,
+    body_fat_goal: String,
+    muscle_mass_goal: String,
     target_weight: Number,
     weight_unit: String,
 }
 
+const healthCalculations = {
+    BMI: Number,
+    BMR: Number,
+    min_healthy_weight: Number,
+    max_healthy_weight: Number,
+    ideal_weight: Number,
+    weight_unit: String,
+}
+
 const currentFitnessLevel = {
+    overall: Number,
     strength: Number,
     mobility: Number,
     endurance: Number,
+    cardio: Number,
     stability: Number,
     flexibility: Number,
-    cardio: Number,
     agility: Number,
-    core_strength: Number,
-    energy_level: Number,
-    pose_quality: Number,
-    diet_quality: Number,
+    pain: Number
 }
 
-const fitnessGoals = {
+const targetFitnessLevel = {
     strength: Number,
     mobility: Number,
     endurance: Number,
+    cardio: Number,
     stability: Number,
     flexibility: Number,
-    cardio: Number,
     agility: Number,
-    core_strength: Number,
-    energy_level: Number,
-    pain_relief: Number,
-    rehabilaton: Number,
-    pose_correction: Number,
-    diet: Number
+    rehabilitation: Number
 }
 
-const painAreaLevel = {
+const painLevel = {
     neck: Number,
-    right_shoulder: Number,
-    right_elbow: Number,
-    right_wrist: Number,
-    right_hand: Number,
-    right_hand_fingers: Number,
-    right_hip: Number,
-    right_knee: Number,
-    right_ankle: Number,
-    left_shoulder: Number,
-    left_elbow: Number,
-    left_wrist: Number,
-    left_hand: Number,
-    left_hand_fingers: Number,
-    left_hip: Number,
-    left_knee: Number,
-    left_ankle: Number,
-    lower_back: Number,
-    mid_back: Number,
-    upper_back: Number,
-    ribs: Number,
-}
-
-const mobilityAreaLevel = {
-    neck: Number,
-    right_shoulder: Number,
-    right_elbow: Number,
-    right_wrist: Number,
-    right_hand_fingers: Number,
-    right_hip: Number,
-    right_knee: Number,
-    right_ankle: Number,
-    left_shoulder: Number,
-    left_elbow: Number,
-    left_wrist: Number,
-    left_hand_fingers: Number,
-    left_hip: Number,
-    left_knee: Number,
-    left_ankle: Number,
-    lower_back_spine: Number,
-    mid_back_spine: Number,
-    upper_back_spine: Number,
-}
-
-const StrenghtAreaLevel = {
-    legs: Number,
-    knees: Number,
-    ankles: Number,
-    arms: Number,
     shoulders: Number,
     wrists: Number,
+    hips: Number,
+    knees: Number,
+    ankles: Number,
     chest: Number,
-    abs: Number,
     lower_back: Number,
-    upper_back: Number,
-    butt_hips: Number,
-    legs_thighs: Number,
-    legs_calves: Number,
+    upper_back: Number
 }
 
-const activity = {
-    num_workout_days_per_week: Number,
-    num_hours_per_workout_day: Number,
-    workout_intensity_level: Number,
-    workout_difficulty_level: Number,
+const mobilityLevel = {
+    neck: Number,
+    shoulders: Number,
+    wrists: Number,
+    hips: Number,
+    knees: Number,
+    ankles: Number,
+    chest: Number,
+    spine: Number
 }
+
+const strenghtLevel = {
+    legs: Number,
+    arms: Number,
+    abs: Number,
+    chest: Number,
+    lower_back: Number,
+    upper_back: Number
+}
+
 
 const user = {
     email: String,
@@ -127,7 +97,8 @@ const user = {
 
 const availableEquipments = {
     "home": { type: Array, default: undefined },
-    "gym": { type: Array, default: undefined }
+    "gym": { type: Array, default: undefined },
+    "travel": { type: Array, default: undefined },
 }
 
 
@@ -135,15 +106,15 @@ const userFitnessStateGoal = {
     user: user,
     body_physical_measurement: bodyPhysicalMeasurement,
     weight_goals: weightGoals,
+    health_calculations: healthCalculations,
     current_fitness_level: currentFitnessLevel,
-    target_fitness_goals_level: fitnessGoals,
-    current_pain_level: painAreaLevel,
-    current_strength_level: StrenghtAreaLevel,
-    target_strength_level: StrenghtAreaLevel,
-    current_mobility_level: mobilityAreaLevel,
-    target_mobility_level: mobilityAreaLevel,
-    current_activity: activity,
-    target_activity: activity,
+    target_fitness_level: targetFitnessLevel,
+    current_pain_level: painLevel,
+    target_rehabilitation_level: painLevel,
+    current_strength_level: strenghtLevel,
+    target_strength_level: strenghtLevel,
+    current_mobility_level: mobilityLevel,
+    target_mobility_level: mobilityLevel,
     available_equipments: availableEquipments,
 }
 
