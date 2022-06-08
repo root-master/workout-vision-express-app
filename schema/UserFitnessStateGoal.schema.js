@@ -78,8 +78,8 @@ const strenghtLevel = {
     arms: Number,
     abs: Number,
     chest: Number,
-    lower_back: Number,
-    upper_back: Number
+    back: Number,
+    shoulders: Number
 }
 
 
