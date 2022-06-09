@@ -13,6 +13,7 @@ const sessionRouter = require("./routes/session.routes");
 const userSessionRouter = require("./routes/userSession.routes")
 const userFeatureRouter = require("./routes/userFeature.routes")
 const userFitnessStateGoal = require("./routes/userFitnessStateGoal.routes")
+const WorkoutSessionRouter = require("./routes/WorkoutSession.routes")
 
 // Middlewares
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(cors());
 app.use("/movement_videos", movementVideoRouter);
 app.use("/movements", movementRouter);
 app.use("/sessions", sessionRouter);
+app.use("/workout_sessions", WorkoutSessionRouter);
 app.use("/user_sessions", userSessionRouter);
 app.use("/user_features", userFeatureRouter);
 app.use("/user_fitness_state_goal", userFitnessStateGoal);

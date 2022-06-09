@@ -49,7 +49,6 @@ exports.sessionController = {
         throw createHttpError.BadRequest("Session ID not found");
       const deletedSession = await sessionModel.deleteSessionById(sessionId);
       res.status(200).json({ deletedSession });
-      s;
     } catch (error) {
       next(error);
     }
