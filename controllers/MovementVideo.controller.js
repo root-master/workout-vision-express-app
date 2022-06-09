@@ -4,9 +4,9 @@ const createHttpError = require("http-errors");
 const omit = require("lodash/omit");
 
 exports.MovementVideoController = {
-    getPublicMovementVideos: async (req, res, next) => {
+    getAllMovementVideos: async (req, res, next) => {
         try {
-            const allMovementVideos = await MovementVideoModel.findAllPublicMovementVideos();
+            const allMovementVideos = await MovementVideoModel.findAllMovementVideos();
             res.status(202).json({ allMovementVideos });
         } catch (error) {
             next(error);
