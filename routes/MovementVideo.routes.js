@@ -2,7 +2,7 @@ const express = require("express");
 const { MovementVideoController } = require("../controllers/MovementVideo.controller");
 const router = express.Router();
 
-router.get("/", MovementVideoController.getPublicMovementVideos);
+router.get("/", MovementVideoController.getAllMovementVideos);
 
 router.get("/:movementVideoId", MovementVideoController.getMovementVideo);
 

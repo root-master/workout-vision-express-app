@@ -1,17 +1,19 @@
 const MovementVideo = require("../schema/MovementVideo.schema");
 
 module.exports = class movementModel {
-    static async findAllMovements() {
+    static async findAllMovementVideos() {
         return await MovementVideo.find({});
     }
 
-    static async findAllPublicMovementVideos() {
-        return await MovementVideo.find({ private: false });
-    }
+    // static async findAllPublicMovementVideos() {
+    //     return await MovementVideo.find({ private: false });
+    // }
+    
+    // https://stackoverflow.com/questions/33627238/mongoose-find-with-multiple-conditions
 
-    static async findAllUserMovementVideos({ userId }) {
-        return await MovementVideo.find({ "user.sub": userId });
-    }
+    // static async findAllUserMovementVideos({ userId }) {
+    //     return await MovementVideo.find({ "user.sub": userId });
+    // }
 
     static async postMovementVideo(newMovementVideo) {
         return await MovementVideo.create(newMovementVideo);
