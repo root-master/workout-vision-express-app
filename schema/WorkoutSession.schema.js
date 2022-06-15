@@ -27,11 +27,13 @@ const setsGoals = {
     use_different_weights_per_set: Boolean,
     use_different_calories_per_set: Boolean,
     rest_time_between_sets: Number,
+    rest_time_after_sets: Number
 }
 
 const repsGoals = {
     reps_number: Number,
     reps_array: Array(Number),
+    reps_goal_type: String
 }
 
 const cardioGoals = {
@@ -88,7 +90,7 @@ const metaData = {
 }
 
 const program = {
-    workout_program_name: String,
+    program_name: String,
 }
 
 const Workout = {
