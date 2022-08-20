@@ -9,11 +9,10 @@ const roundsGoals = {
     time_goal_type: String,
     max_time_minutes: Number,
     time_per_round: Number,
-    time_unit: String,
-    use_different_reps_per_round: Boolean,
-    use_different_weights_per_round: Boolean,
-    use_different_calories_per_round: Boolean,
+    total_time_minutes: Number,
+    use_different_target_per_round: Boolean,
     rest_time_between_rounds: Number,
+    rest_time_after_rounds: Number,
 }
 
 const setsGoals = {
@@ -22,12 +21,10 @@ const setsGoals = {
     time_goal_type: String,
     max_time_minutes: Number,
     time_per_set: Number,
-    time_unit: String,
-    use_different_reps_per_set: Boolean,
-    use_different_weights_per_set: Boolean,
-    use_different_calories_per_set: Boolean,
-    rest_time_between_sets: Number,
-    rest_time_after_sets: Number
+    total_time_minutes: Number,
+    use_different_target_per_set: Boolean,
+    rest_seconds_between_sets: Number,
+    rest_seconds_after_sets: Number
 }
 
 const repsGoals = {
